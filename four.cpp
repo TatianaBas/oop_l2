@@ -4,7 +4,7 @@
 #include <cmath>
 #include "four.h"
 
-Four::Four() : _size(0), _four{nullptr}
+Four::Four() : _size(0), _four{nullptr}                         
 {
     std::cout << "default constructing" << std::endl;
 }
@@ -31,16 +31,16 @@ Four::Four(const std::initializer_list<unsigned char> &t)
     }
 }
 
-Four::Four(const Four &other)
+Four::Four(const Four &other)                     //copy constructor
 {
-    std::cout << "Copy to other" << std::endl;
+    std::cout << "Copy constructor" << std::endl;
     _size  = other._size;
     _four = new unsigned char[_size];
 
     for(size_t i = 0;i<_size;++i) _four[i] = other._four[i];
 }
 
-Four::Four(const std::string &t)
+Four::Four(const std::string &t)                                          //copy
 {
     std::cout << "Copy string constructor" << std::endl;
     _four = new unsigned char[t.size()];
@@ -54,9 +54,9 @@ Four::Four(const std::string &t)
 }
 
 
-Four::Four(Four &&other) noexcept
+Four::Four(Four &&other) noexcept                        //move costructor
 {
-    std::cout << "Move to other" << std::endl;
+    std::cout << "Move constructor" << std::endl;
     _size = other._size;
     _four = other._four;
 
@@ -154,12 +154,12 @@ size_t Four::arr_size(unsigned char* t) {                     // size of number
 }
 
 
-unsigned char* Four::getFourArray() {
+unsigned char* Four::getFourArray() {                     // returns array of fours
     return this->_four;
 }
 
 
-void Four::reverseArray(unsigned char* t, size_t len) {
+void Four::reverseArray(unsigned char* t, size_t len) {                 // array reverse 
     if (len <= 1) {
         return;
     }
@@ -175,7 +175,7 @@ void Four::reverseArray(unsigned char* t, size_t len) {
     }
 }
 
-size_t Four::four_To_Decimal(unsigned char* t, size_t len) {
+size_t Four::four_To_Decimal(unsigned char* t, size_t len) {                 // transfer from four to decimal for arithmetic and comparison operations
     unsigned int decimalNumber = 0;
 
     for (int i = 0; i < len; ++i) {
@@ -186,7 +186,7 @@ size_t Four::four_To_Decimal(unsigned char* t, size_t len) {
     return decimalNumber;
 }
 
-unsigned char* Four::decimal_To_Four(const size_t &n) {
+unsigned char* Four::decimal_To_Four(const size_t &n) {                 // transfer from decimal to four for arithmetic and comparison operation
     unsigned char * number;
     size_t len = 0;
     if (n == 0) {
